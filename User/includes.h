@@ -17,5 +17,7 @@
 #include "usart1.h"
 #include "usart2.h"
 #include "usart.h"
+#include "can0.h"
+#include "can.h"
 
 #endif

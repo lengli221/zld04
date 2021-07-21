@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>GD32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Library;..\Library\CMSIS;..\Library\CMSIS\GD;..\Library\CMSIS\GD\GD32F10x;..\Library\CMSIS\GD\GD32F10x\Include;..\Library\CMSIS\GD\GD32F10x\Source;..\Library\CMSIS\GD\GD32F10x\Source\ARM;..\Library\Standard\Include;..\Library\Standard\Source;..\User;..\User\common;..\User\port;..\User\port\gpio;..\User\port\sysTick;..\User\port\usart\usart1;..\User\port\usart;..\User\port\usart\usart2</IncludePath>
+              <IncludePath>..\Library;..\Library\CMSIS;..\Library\CMSIS\GD;..\Library\CMSIS\GD\GD32F10x;..\Library\CMSIS\GD\GD32F10x\Include;..\Library\CMSIS\GD\GD32F10x\Source;..\Library\CMSIS\GD\GD32F10x\Source\ARM;..\Library\Standard\Include;..\Library\Standard\Source;..\User;..\User\common;..\User\port;..\User\port\gpio;..\User\port\sysTick;..\User\port\usart\usart1;..\User\port\usart;..\User\port\usart\usart2;..\User\port\can\can0;..\User\port\can</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -437,6 +437,16 @@
               <FileType>1</FileType>
               <FilePath>..\Library\Standard\Source\gd32f10x_dma.c</FilePath>
             </File>
+            <File>
+              <FileName>gd32f10x_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Library\Standard\Source\gd32f10x_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>gd32f10x_dbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Library\Standard\Source\gd32f10x_dbg.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -526,6 +536,26 @@
               <FileName>usart2.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\port\usart\usart2\usart2.h</FilePath>
+            </File>
+            <File>
+              <FileName>can0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\can\can0\can0.c</FilePath>
+            </File>
+            <File>
+              <FileName>can0.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\port\can\can0\can0.h</FilePath>
+            </File>
+            <File>
+              <FileName>can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\can\can.c</FilePath>
+            </File>
+            <File>
+              <FileName>can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\port\can\can.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -7,7 +7,11 @@ void nvic_Cfg(void){
 	/*
 	** usart1 interrput cfg
 	*/
-	usart1_Interrput_Cfg();	
+	usart1_Interrput_Cfg();
+	/*
+	** can0 interrupt cfg
+	*/
+	can0_Interrupt_Cfg();	
 }
 
 /*
@@ -30,5 +34,9 @@ void bsp_init(void){
 	** init usart Cfg
 	*/
 	init_Usart_Cfg();	
+	/*
+	** init can
+	*/
+	init_Can();	
 }
 

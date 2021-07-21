@@ -47,7 +47,7 @@ OF SUCH DAMAGE.
 #include "gd32f10x_gpio.h"
 //#include "gd32f10x_crc.h"
 #include "gd32f10x_dma.h"
-//#include "gd32f10x_dbg.h"
+#include "gd32f10x_dbg.h"
 //#include "gd32f10x_adc.h"
 //#include "gd32f10x_dac.h"
 //#include "gd32f10x_fwdgt.h"
@@ -59,7 +59,7 @@ OF SUCH DAMAGE.
 //#include "gd32f10x_spi.h"
 //#include "gd32f10x_sdio.h"
 //#include "gd32f10x_exmc.h"
-//#include "gd32f10x_can.h"
+#include "gd32f10x_can.h"
 //#include "gd32f10x_enet.h"
 #include "gd32f10x_misc.h"
 
