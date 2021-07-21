@@ -24,6 +24,11 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 	2.2 SysTick
 	2.3 USART1-->DMA中断发送,基本的中断接收
 	2.4 USART2-->printf
+	
+20210721 17:54
+1.CAN0t采用Loopback测试通过
+ --》存在问题是:中断中检测空邮件标记,无法成功
+ 2.CAN0采用Normal待板子再行测试	
 
 #### 参与贡献
 
