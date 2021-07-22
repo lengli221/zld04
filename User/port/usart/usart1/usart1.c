@@ -49,7 +49,7 @@ void init_usart1_DMA(void){
 	dma_interrupt_disable(DMA0,DMA_CH6,DMA_INT_HTF);
 	dma_interrupt_disable(DMA0,DMA_CH6,DMA_INT_ERR);	
 
-	/* USART DMA0 enable for transmission */
+	/* USART1 DMA0 enable for transmission */
 	usart_dma_transmit_config(USART1, USART_DENT_ENABLE);	
 
 	/* enable DMA channel6 */
@@ -97,7 +97,7 @@ void DMA0_Channel6_IRQHandler(void){
 ** USART1 IRQHandler
 */
 void USART1_IRQHandler(void){
-	volatile uint8 dat = 0;
+	uint8 dat = 0;
 	
 	if(usart_flag_get(USART1,USART_FLAG_FERR) != RESET
 		|| usart_flag_get(USART1,USART_FLAG_NERR) != RESET

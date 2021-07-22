@@ -62,15 +62,16 @@ void get_RecvData(uint8 port,uint8* data,uint16* len){
 **	@param:
 **		uint8:port
 **		uint8*:数据项
-**		uint16:数据长度
+**		uint16:发送数据长度
+**		uint16:接受数据长度
 */
-void set_SendData(uint8 port,uint8* data,uint16 len){
+void set_SendData(uint8 port,uint8* data,uint16 txlen,uint16 rxlen){
 		switch(port){
 			case 1:
-				usart1_DmaSend(data,len);
+				usart1_DmaSend(data,txlen);
 				break;
 			case 2:
-				
+				usart2_DmaSend(data,txlen,rxlen);
 				break;
 		}
 }
@@ -109,9 +110,9 @@ void com_bsp(uint8 port,uint32 bd,uint32 wlen,uint32 stblen,uint32 paritycfg){
 	usart_hardware_flow_cts_config(usrt, USART_CTS_DISABLE);
 	usart_receive_config(usrt, USART_RECEIVE_ENABLE);
 	usart_transmit_config(usrt, USART_TRANSMIT_ENABLE);
-	usart_interrupt_enable(usrt,USART_INT_RBNE);
+	//usart_interrupt_enable(usrt,USART_INT_RBNE);
 	usart_enable(usrt);	
-	usart_dma_transmit_config(usrt, USART_DENT_ENABLE);
+	//usart_dma_transmit_config(usrt, USART_DENT_ENABLE);
 	//dma_channel_enable(DMA0, DMA_CH6);
 }
 
@@ -128,9 +129,9 @@ void init_Usart_Cfg(void){
 	*/
 	com_bsp(1,115200,USART_WL_8BIT,USART_STB_1BIT,USART_PM_NONE);
 	/*
-	** init Usart2 Gpio Cfg
+	** init Usart2 Cfg
 	*/
-	init_Usart2GpioCfg();
+	init_Usart2Cfg();
 	/*
 	** com bsp
 	*/

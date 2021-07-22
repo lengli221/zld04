@@ -9,6 +9,10 @@ void nvic_Cfg(void){
 	*/
 	usart1_Interrput_Cfg();
 	/*
+	** usart2 interrput cfg
+	*/
+	usart2_Interrupt_Cfg();	
+	/*
 	** can0 interrupt cfg
 	*/
 	can0_Interrupt_Cfg();	

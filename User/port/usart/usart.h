@@ -33,9 +33,10 @@ void fill_RecData(uint8 port,uint8 data);
 **	@param:
 **		uint8:port
 **		uint8*:数据项
-**		uint16:数据长度
+**		uint16:发送数据长度
+**		uint16:接受数据长度
 */
-void set_SendData(uint8 port,uint8* data,uint16 len);
+void set_SendData(uint8 port,uint8* data,uint16 txlen,uint16 rxlen);
 
 /*
 ** com bsp
