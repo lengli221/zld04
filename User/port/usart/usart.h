@@ -2,31 +2,42 @@
 #define __USART_H_
 
 #include "type.h"
+#include "gd32f10x.h"
 
 #define ARRAYNUM(arr_name)     (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
 /*
-** receive Data struct
+** Receive Data struct
 */
 typedef struct{
-	uint8 buf[256];/*数据空间*/
-	uint16 len;/*数据长度*/
-}RecData;
+	uint8 buf[256];/*数据缓存*/
+	bool recFinsh;/*接收完成标志*/
+}Rec_Data;
 
 /*
-** clear RecData1
+** clear RecData
 **	@param:
 **		uint8:port
 */
-void clear_RecData1(uint8 port);
+void clear_RecData(uint8 port);
 
 /*
-** fill RecData
+** get Recv Is Finsh Flag
 **	@param:
 **		uint8:port
-**		uint8:data
+**	@return:
+**		bool:true-->接收完成 false-->接收失败
 */
-void fill_RecData(uint8 port,uint8 data);
+bool get_RecvIsFinshFlag(uint8 port);
+
+/*
+** get Recv Data Ptr
+**	@param:
+**		uint8:port
+**	@return:
+**		uint8*:数据项首地址
+*/
+uint8* getRecvDataPtr(uint8 port);
 
 /*
 ** set SendData

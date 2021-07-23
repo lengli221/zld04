@@ -120,7 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>P鮈w??P鮈w??</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -178,7 +177,12 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rxbuf2</ItemText>
+          <ItemText>recData2</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>recData1</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

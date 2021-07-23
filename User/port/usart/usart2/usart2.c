@@ -1,7 +1,33 @@
 #include "includes.h"
 
 uint8 txbuf2[256] = {0};
-uint8 rxbuf2[256] = {0};
+Rec_Data recData2 = {0};
+
+/*
+** clear Recv Data2
+*/
+void clear_RecvData2(void){
+	memset((uint8*)&recData2.buf[0],0,ARRAYNUM(recData2.buf));
+	recData2.recFinsh = FALSE;
+}
+
+/*
+** get Recv2 Is Finsh Flag
+**	@return:
+**		bool:true-->接收完成 false-->接收失败
+*/
+bool get_Recv2IsFinshFlag(void){
+	return recData2.recFinsh;
+}
+
+/*
+** get Recv2 Data Ptr
+**	@return:
+**		uint8*:数据项首地址
+*/
+uint8* get_Recv2DataPrt(void){
+	return (uint8*)&recData2.buf[0];
+}
 
 /*
 ** init Usart2 Gpio Cfg
@@ -45,10 +71,10 @@ void init_usart2_DMA(void){
 	/* deinitialize DMA channel2 (USART2 rx) */
 	dma_deinit(DMA0, DMA_CH2);	
 	dma_init_struct.direction = DMA_PERIPHERAL_TO_MEMORY;
-	dma_init_struct.memory_addr = (uint32_t)rxbuf2;
+	dma_init_struct.memory_addr = (uint32_t)recData2.buf;
 	dma_init_struct.memory_inc = DMA_MEMORY_INCREASE_ENABLE;
 	dma_init_struct.memory_width = DMA_MEMORY_WIDTH_8BIT;
-	dma_init_struct.number = ARRAYNUM(rxbuf2);
+	dma_init_struct.number = ARRAYNUM(recData2.buf);
 	dma_init_struct.periph_addr = USART2_DATA_ADDRESS;
 	dma_init_struct.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
 	dma_init_struct.periph_width = DMA_PERIPHERAL_WIDTH_8BIT;
@@ -77,8 +103,8 @@ void init_usart2_DMA(void){
 */
 void usart2_Interrupt_Cfg(void){
 	nvic_irq_enable(USART2_IRQn,1,0);
-	nvic_irq_enable(DMA0_Channel1_IRQn,1,1);
-	nvic_irq_enable(DMA0_Channel2_IRQn,1,2);
+	nvic_irq_enable(DMA0_Channel1_IRQn,1,1);//tx
+	nvic_irq_enable(DMA0_Channel2_IRQn,1,2);//rx
 }
 
 /*
@@ -87,10 +113,12 @@ void usart2_Interrupt_Cfg(void){
 void usart2_DmaSend(uint8* data,uint16 txlen,uint16 rxlen){
 	memcpy((uint8*)&txbuf2[0],(uint8*)&data[0],txlen);
 	dma_transfer_number_config(DMA0,DMA_CH1,txlen);//tx
-	/*备注:后两条语句非常重要--》解决回复丢数据,重发数据之后,重定位接受数据地址*/
+	/*备注:后三条语句非常重要--》解决回复丢数据,重发数据之后,重定位接受数据地址*/
 	dma_channel_disable(DMA0, DMA_CH2);
-	dma_memory_address_config(DMA0,DMA_CH2,(uint32)rxbuf2);//memory addr(rx)
+	dma_memory_address_config(DMA0,DMA_CH2,(uint32)recData2.buf);//memory addr(rx)
 	dma_transfer_number_config(DMA0,DMA_CH2,rxlen);//rx
+	/*clear Recv Data2*/
+	clear_RecvData2();
 	usart_interrupt_flag_clear(USART2,USART_INT_FLAG_TC);
 	dma_interrupt_enable(DMA0, DMA_CH1, DMA_INT_FTF);
 	dma_interrupt_disable(DMA0,DMA_CH1,DMA_INT_HTF);
@@ -130,6 +158,8 @@ void DMA0_Channel2_IRQHandler(void){
 		usart_dma_receive_config(USART2, USART_DENR_DISABLE);
 		dma_channel_disable(DMA0, DMA_CH2);
 		usart_interrupt_enable(USART2,USART_INT_RBNE);
+		/*提供标志给App层 -- 接收完成*/
+		recData2.recFinsh = TRUE;
 	}
 }
 

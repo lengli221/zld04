@@ -19,13 +19,14 @@ int main(void){
 			flag = flag == FALSE?TRUE:FALSE;
 			flag == TRUE?Led_Ctr_Off:Led_Ctr_On;
 			//printf("hello zld");
-			set_SendData(1,(uint8*)&tx[0],8,0);
 			switch(step){
 				case 0:
+					set_SendData(1,(uint8*)&tx[0],8,8);
 					set_SendData(2,(uint8*)&tx[0],8,8);
 					step++;
 					break;
 				case 1:
+					set_SendData(1,(uint8*)&tx1[0],8,10);
 					set_SendData(2,(uint8*)&tx1[0],8,10);
 					step = 0;
 					break;

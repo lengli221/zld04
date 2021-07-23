@@ -1,60 +1,53 @@
 #include "includes.h"
 
-RecData recData1 = {0};
-
 /*
-** clear RecData1
+** clear RecData
 **	@param:
 **		uint8:port
 */
-void clear_RecData1(uint8 port){
+void clear_RecData(uint8 port){
 	switch(port){
 		case 1:
-			memset((uint8*)&recData1.buf[0],0,(uint16)ARRAYNUM(recData1.buf));
+			clear_RecvData1();
 			break;
 		case 2:
-			
+			clear_RecvData2();
 			break;
 	}
 }
 
 /*
-** fill RecData
+** get Recv Is Finsh Flag
 **	@param:
 **		uint8:port
-**		uint8:data
+**	@return:
+**		bool:true-->接收完成 false-->接收失败
 */
-void fill_RecData(uint8 port,uint8 data){
+bool get_RecvIsFinshFlag(uint8 port){
 	switch(port){
 		case 1:
-			recData1.buf[recData1.len++] = data;
-			if((uint16)ARRAYNUM(recData1.buf) == recData1.len){
-				memset((uint8*)&recData1.buf[0],0,(uint16)ARRAYNUM(recData1.buf));
-			}
-			break;
+			return get_Recv1IsFinshFlag();
 		case 2:
-			
-			break;
+			return get_Recv2IsFinshFlag();
 	}
+	return FALSE;
 }
 
 /*
-** get RecvData
+** get Recv Data Ptr
 **	@param:
 **		uint8:port
-**		uint8*:数据项
-**		uint16:数据长度
+**	@return:
+**		uint8*:数据项首地址
 */
-void get_RecvData(uint8 port,uint8* data,uint16* len){
+uint8* getRecvDataPtr(uint8 port){
 	switch(port){
 		case 1:
-			memcpy((uint8*)&data[0],(uint8*)&recData1.buf[0],recData1.len);
-			*len = recData1.len;
-			break;
+			return get_Recv1DataPrt();
 		case 2:
-			
-			break;
+			return get_Recv2DataPrt();
 	}
+	return NULL;
 }
 
 /*
@@ -68,7 +61,7 @@ void get_RecvData(uint8 port,uint8* data,uint16* len){
 void set_SendData(uint8 port,uint8* data,uint16 txlen,uint16 rxlen){
 		switch(port){
 			case 1:
-				usart1_DmaSend(data,txlen);
+				usart1_DmaSend(data,txlen,rxlen);
 				break;
 			case 2:
 				usart2_DmaSend(data,txlen,rxlen);
@@ -110,10 +103,7 @@ void com_bsp(uint8 port,uint32 bd,uint32 wlen,uint32 stblen,uint32 paritycfg){
 	usart_hardware_flow_cts_config(usrt, USART_CTS_DISABLE);
 	usart_receive_config(usrt, USART_RECEIVE_ENABLE);
 	usart_transmit_config(usrt, USART_TRANSMIT_ENABLE);
-	//usart_interrupt_enable(usrt,USART_INT_RBNE);
 	usart_enable(usrt);	
-	//usart_dma_transmit_config(usrt, USART_DENT_ENABLE);
-	//dma_channel_enable(DMA0, DMA_CH6);
 }
 
 /*
@@ -128,6 +118,7 @@ void init_Usart_Cfg(void){
 	** com bsp
 	*/
 	com_bsp(1,115200,USART_WL_8BIT,USART_STB_1BIT,USART_PM_NONE);
+	
 	/*
 	** init Usart2 Cfg
 	*/
