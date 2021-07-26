@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>GD32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Library;..\Library\CMSIS;..\Library\CMSIS\GD;..\Library\CMSIS\GD\GD32F10x;..\Library\CMSIS\GD\GD32F10x\Include;..\Library\CMSIS\GD\GD32F10x\Source;..\Library\CMSIS\GD\GD32F10x\Source\ARM;..\Library\Standard\Include;..\Library\Standard\Source;..\User;..\User\common;..\User\port;..\User\port\gpio;..\User\port\sysTick;..\User\port\usart\usart1;..\User\port\usart;..\User\port\usart\usart2;..\User\port\can\can0;..\User\port\can</IncludePath>
+              <IncludePath>..\Library;..\Library\CMSIS;..\Library\CMSIS\GD;..\Library\CMSIS\GD\GD32F10x;..\Library\CMSIS\GD\GD32F10x\Include;..\Library\CMSIS\GD\GD32F10x\Source;..\Library\CMSIS\GD\GD32F10x\Source\ARM;..\Library\Standard\Include;..\Library\Standard\Source;..\User;..\User\common;..\User\port;..\User\port\gpio;..\User\port\sysTick;..\User\port\usart\usart1;..\User\port\usart;..\User\port\usart\usart2;..\User\port\can\can0;..\User\port\can;..\User\bms;..\User\charger;..\User\pro\modbus;..\User\ctr_sub</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -482,6 +482,16 @@
               <FileType>5</FileType>
               <FilePath>..\User\common\debug_printf.h</FilePath>
             </File>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\common\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\common\common.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -556,6 +566,106 @@
               <FileName>can.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\port\can\can.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>bms</GroupName>
+          <Files>
+            <File>
+              <FileName>lowerlayer_Bms.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bms\lowerlayer_Bms.c</FilePath>
+            </File>
+            <File>
+              <FileName>lowerlayer_Bms.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\bms\lowerlayer_Bms.h</FilePath>
+            </File>
+            <File>
+              <FileName>lowerlayer_BmsInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bms\lowerlayer_BmsInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>lowerlayer_BmsInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\bms\lowerlayer_BmsInfo.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>charger</GroupName>
+          <Files>
+            <File>
+              <FileName>zy_Charger.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\charger\zy_Charger.c</FilePath>
+            </File>
+            <File>
+              <FileName>zy_Charger.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\charger\zy_Charger.h</FilePath>
+            </File>
+            <File>
+              <FileName>zy_ChargerInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\charger\zy_ChargerInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>zy_ChargerInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\charger\zy_ChargerInfo.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>pro</GroupName>
+          <Files>
+            <File>
+              <FileName>modbus_Pro.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\pro\modbus\modbus_Pro.c</FilePath>
+            </File>
+            <File>
+              <FileName>modbus_Pro.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\pro\modbus\modbus_Pro.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ctr_sub</GroupName>
+          <Files>
+            <File>
+              <FileName>upperlayer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer.h</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_stateInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_stateInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_stateInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_stateInfo.h</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_cfgInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_cfgInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_cfgInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_cfgInfo.h</FilePath>
             </File>
           </Files>
         </Group>

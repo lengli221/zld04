@@ -82,7 +82,7 @@ void init_usart2_DMA(void){
 	dma_init(DMA0, DMA_CH2, &dma_init_struct);	
 	
 	/* configure DMA mode -->tx*/
-	dma_circulation_enable(DMA0, DMA_CH1);
+	dma_circulation_disable(DMA0, DMA_CH1);
 	dma_memory_to_memory_disable(DMA0, DMA_CH1);
 	/* enable/disable DMA0 channel6 transfer complete interrupt */
 	dma_interrupt_enable(DMA0, DMA_CH1, DMA_INT_FTF);
@@ -90,7 +90,7 @@ void init_usart2_DMA(void){
 	dma_interrupt_disable(DMA0,DMA_CH1,DMA_INT_ERR);		
 	
 	/* configure DMA mode -->rx*/
-	dma_circulation_enable(DMA0, DMA_CH2);	
+	dma_circulation_disable(DMA0, DMA_CH2);	
 	dma_memory_to_memory_disable(DMA0, DMA_CH2);
 	/* enable/disable DMA0 channel2 transfer complete interrupt */
 	dma_interrupt_enable(DMA0, DMA_CH2, DMA_INT_FTF);
@@ -113,6 +113,7 @@ void usart2_Interrupt_Cfg(void){
 void usart2_DmaSend(uint8* data,uint16 txlen,uint16 rxlen){
 	memcpy((uint8*)&txbuf2[0],(uint8*)&data[0],txlen);
 	dma_transfer_number_config(DMA0,DMA_CH1,txlen);//tx
+	dma_memory_address_config(DMA0,DMA_CH1,(uint32)txbuf2);//memory addr(tx)
 	/*备注:后三条语句非常重要--》解决回复丢数据,重发数据之后,重定位接受数据地址*/
 	dma_channel_disable(DMA0, DMA_CH2);
 	dma_memory_address_config(DMA0,DMA_CH2,(uint32)recData2.buf);//memory addr(rx)

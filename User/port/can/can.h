@@ -42,5 +42,15 @@ void can_TransitData(uint8 port,uint8 len, uint8* tx,uint8 funId);
 */
 void can_TxDataTask(void);
 
+/*
+** can Recv Data
+**	@param:
+**		uint8:port
+**		can_receive_message_struct*:接收邮箱数据
+**	@return:
+**		bool:true-->有数据 false-->无数据
+*/
+bool can_RecvData(uint8 port,can_receive_message_struct* msg);
+
 #endif
 

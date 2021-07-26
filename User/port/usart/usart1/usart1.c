@@ -90,7 +90,7 @@ void init_usart1_DMA(void){
 	dma_interrupt_disable(DMA0,DMA_CH6,DMA_INT_ERR);	
 
 	/* configure DMA mode -->rx*/
-	dma_circulation_enable(DMA0, DMA_CH5);	
+	dma_circulation_disable(DMA0, DMA_CH5);	
 	dma_memory_to_memory_disable(DMA0, DMA_CH5);
 	/* enable/disable DMA0 channel2 transfer complete interrupt */
 	dma_interrupt_enable(DMA0, DMA_CH5, DMA_INT_FTF);
@@ -113,6 +113,7 @@ void usart1_Interrput_Cfg(void){
 void usart1_DmaSend(uint8* data,uint16 txlen,uint16 rxlen){
 	memcpy((uint8*)&txbuf[0],(uint8*)&data[0],txlen);
 	dma_transfer_number_config(DMA0,DMA_CH6,txlen);//tx
+	dma_memory_address_config(DMA0,DMA_CH6,(uint32)txbuf);//memory addr(tx)
 	/*备注:后三条语句非常重要--》解决回复丢数据,重发数据之后,重定位接受数据地址*/
 	dma_channel_disable(DMA0, DMA_CH5);
 	dma_memory_address_config(DMA0,DMA_CH5,(uint32)recData1.buf);//memory addr(rx)	
