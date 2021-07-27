@@ -1,7 +1,11 @@
 #include "includes.h"
 
 const static UpperlayerPasreFun ulPasreFunTable[] = {
-	{0x01,parse_StateInfo}
+	{0x01,parse_StateInfo},
+	{0x02,parse_CfgInfo},
+	{0x03,parse_OpenDoor},
+	{0x80,parse_BmsInfo},
+	{0x81,parse_ChargerInfo}
 };
 const static uint8 ulPasreFunTableNum = sizeof(ulPasreFunTable)/sizeof(UpperlayerPasreFun);
 

@@ -1,6 +1,9 @@
 #ifndef __LOWERLAYER_BMSINFO_H_
 #define __LOWERLAYER_BMSINFO_H_
 
+#include "type.h"
+#include "gd32f10x.h"
+
 /*
 ** BMS Device Addr
 */
@@ -11,7 +14,7 @@
 ** Bms Id
 */
 typedef struct{
-	uint8 idLen;/*id长度--铁塔电池ID存在两种电池*/
+	uint16 idLen;/*id长度--铁塔电池ID存在两种电池*/
 	uint8 id[28];/*ID*/	
 }BmsId;
 
@@ -74,6 +77,13 @@ typedef struct{
 	BmsErr err;/*电池故障信息*/
 }BmsInfo;
 #pragma pack()
+
+/*
+** get SOC
+**	@return:
+**		uint16:SCO
+*/
+uint16 get_SOC(void);
 
 /*
 ** get Bms Id

@@ -3,6 +3,7 @@
 
 #include "type.h"
 #include "modbus_Pro.h"
+#include "gd32f10x.h"
 
 /*
 ** Sub Chk Bat 
@@ -22,6 +23,13 @@ typedef union{
 **		ModbusProFrame:bms 帧框架协议
 */
 ModbusProFrame* get_BmsProFrame(void);
+
+/*
+** get Bat Is Online
+**	@return:
+**		bool:true-->电池在线 false-->电池不在线
+*/
+bool get_BatIsOnline(void);
 
 /*
 ** lowerlayer Bms Fun

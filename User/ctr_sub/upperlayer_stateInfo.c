@@ -49,6 +49,19 @@ void parse_StateInfo(uint8 len,uint8* item){
 void packect_StateInfo(void){
 	uint8 tx[8] = {0};
 	
+	/*更新数据:仓定位,运行状态*/
+	if(get_SOC() >= get_SOCLimit()){
+		stateInfo.sub.doorLoc = 0x02;/*满仓*/
+	}else{
+		if(get_BatIsOnline() == TRUE){/*电池在线,默认--》充电中*/
+			stateInfo.sub.doorLoc = 0x01;/*充电中*/
+			stateInfo.sub.err.bits.batIsOnline = 0x01;/*置位电池在线*/
+		}else{
+			stateInfo.sub.doorLoc = 0x00;/*空闲*/
+			stateInfo.sub.err.bits.batIsOnline = 0x00;/*清除电池在线*/
+		}
+	}
+	
 	/*copy data*/
 	memcpy((uint8*)&tx[0],(uint8*)&stateInfo.sub.protocl,sizeof(SubState));
 	

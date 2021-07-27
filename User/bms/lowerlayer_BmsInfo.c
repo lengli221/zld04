@@ -3,6 +3,15 @@
 BmsInfo bmsInfo = {0};
 
 /*
+** get SOC
+**	@return:
+**		uint16:SCO
+*/
+uint16 get_SOC(void){
+	return bmsInfo.item.soc;
+}
+
+/*
 ** get Bms Id
 ** 	@return:
 **		bool:true-->用于标记打包数据

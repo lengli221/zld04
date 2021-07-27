@@ -2,6 +2,7 @@
 #define __ZY_CHARGERINFO_H_
 
 #include "type.h"
+#include "gd32f10x.h"
 
 /*
 ** Charger Device Addr

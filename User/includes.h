@@ -35,6 +35,9 @@
 /*ctr sub*/
 #include "upperlayer_stateInfo.h"
 #include "upperlayer_cfgInfo.h"
+#include "upperlayer_bmsInfo.h"
+#include "upperlayer_chargerInfo.h"
+#include "upperlayer_openDoor.h"
 #include "upperlayer.h"
 
 #endif

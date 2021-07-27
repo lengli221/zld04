@@ -1,5 +1,7 @@
 #include "includes.h"
 
+extern BmsInfo bmsInfo;
+
 ModbusProFrame bmsProFrame = {0};
 SubChkBat subChkBat = {0};
 
@@ -20,6 +22,13 @@ bool get_BatIsOnline(void){
 */
 ModbusProFrame* get_BmsProFrame(void){
 	return &bmsProFrame;
+}
+
+/*
+** bat OffLine Clear Data
+*/
+void bat_Offline_ClearData(void){
+	memset((uint8*)&bmsInfo.id.idLen,0,sizeof(BmsInfo));
 }
 
 /*
@@ -85,6 +94,8 @@ int8 proc_LogicCtr(bool* proFlag,uint16 rxlen,ModBusParse_Handle handle){
 	if(batOnlineCnt >= 4){
 		batOnlineCnt = 4;
 		subChkBat.bits.batOnline = 0x00;
+		/*bat OffLine Clear Data*/
+		bat_Offline_ClearData();
 	}
 	
 	return ret;

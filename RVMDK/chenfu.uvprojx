@@ -667,6 +667,36 @@
               <FileType>5</FileType>
               <FilePath>..\User\ctr_sub\upperlayer_cfgInfo.h</FilePath>
             </File>
+            <File>
+              <FileName>upperlayer_bmsInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_bmsInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_bmsInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_bmsInfo.h</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_chargerInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_chargerInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_chargerInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_chargerInfo.h</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_openDoor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_openDoor.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_openDoor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_openDoor.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

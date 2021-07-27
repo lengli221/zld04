@@ -8,6 +8,15 @@ void packect_CfgInfo(void);
 CfgInfo cfgInfo = {0};
 
 /*
+** get SOC Limit
+**	@return:
+**		uint8:SOC限定值
+*/
+uint8 get_SOCLimit(void){
+	return cfgInfo.ctr.socLimit;
+}
+
+/*
 ** parse Cfg Info
 **	@param:
 **		uint8:数据项长度

@@ -55,5 +55,10 @@ int main(void){
 		** can Tx Data Task
 		*/
 		can_TxDataTask();
+
+		/*
+		** open Door Proc
+		*/
+		openDoor_Proc();
 	}
 }

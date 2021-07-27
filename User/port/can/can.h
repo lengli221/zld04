@@ -4,8 +4,8 @@
 #include "gd32f10x_can.h"
 #include "type.h"
 
-#define CAN_Rx_MaxNum													(uint8)30
-#define CAN_Tx_MaxNum													(uint8)30
+#define CAN_Rx_MaxNum													(uint8)20
+#define CAN_Tx_MaxNum													(uint8)100
 
 typedef struct{
 	can_receive_message_struct msg[CAN_Rx_MaxNum];

@@ -13,3 +13,31 @@ void init_Gpio_Cfg(void){
 	/*operate*/
 	Led_Ctr_Off;
 }
+
+/*
+** hardware Ctr Door
+**	@param:
+**		bool:
+**				TRUE-->开继电器
+**				FALSE-->关继电器
+*/
+void hd_CtrDoor(bool flag){
+	if(flag == TRUE){/*开继电器*/
+	
+	}else{/*关继电器*/
+	
+	}
+}
+
+/*
+** xy Ctr Door
+** @return:
+**	bool:
+**		TRUE-->开
+**		FALSE-->关
+*/
+bool xy_CtrDoor(void){
+	bool ret = FALSE;
+	
+	return ret;
+}

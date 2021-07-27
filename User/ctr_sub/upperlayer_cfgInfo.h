@@ -3,6 +3,13 @@
 
 #include "type.h"
 
+/*
+** get SOC Limit
+**	@return:
+**		uint8:SOCÏÞ¶¨Öµ
+*/
+uint8 get_SOCLimit(void);
+
 #pragma pack(1)
 /*
 ** Ctr Cfg

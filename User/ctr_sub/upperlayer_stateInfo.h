@@ -47,7 +47,7 @@ typedef struct{
 	uint8 softVer;/*软件版本号*/
 	uint8 doorState;/*仓门状态:0x00(仓门关)/0x01(仓门开)/0x02(仓门故障)*/
 	uint8 doorLoc;/*仓定位:0x00(空仓)/0x01(充电中)/0x02(满电)/0x03(故障)*/
-	SubErr Err;/*故障状态*/
+	SubErr err;/*故障状态*/
 	uint8 batErrLabel;/*电池故障标识*/
 	uint8 subErrLabel;/*分控故障标识*/
 	uint8 ChargerErrLabel;/*充电器故障标识*/

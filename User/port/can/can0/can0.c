@@ -164,7 +164,7 @@ void CAN0_TxDataTask(void){
 	uint8 i = 0;
 	uint8 ret = CAN_NOMAILBOX;
 	
-	if(Tickout((uint32*)&itick,5) == TRUE){
+	if(Tickout((uint32*)&itick,2) == TRUE){
 		for(circ=0;circ<3;){
 			if(can0TxMsgInfo.rCnt != can0TxMsgInfo.wCnt){
 				Tickout((uint32*)&itick,0);
