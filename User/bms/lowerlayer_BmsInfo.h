@@ -49,7 +49,7 @@ typedef struct{
 }BmsErr;
 
 /*
-** Bms Item
+** Bms Item Part1
 */
 typedef struct{
 	uint16 batVol;/*电池包实际总电压--0.01*/
@@ -62,10 +62,23 @@ typedef struct{
 	uint16 batCoreTemp;/*电芯温度*/
 	uint16 mosTemp;/*MOS管温度*/
 	uint16 batCoreVol[20];/*电芯x电压--0.001*/
-	uint16 res[20];/*预留*/
+}BmsItemPart1;
+
+/*
+** Bms Item Part2
+*/
+typedef struct{
 	uint16 reqChgCur;/*请求充电电流--0.01*/
 	uint16 maxChgVol;/*最高充电电压--0.01*/
 	uint16 chgIsPermit;/*充电允许/禁止--0xAA55:允许充电 其余参数均不允许*/	
+}BmsItemPart2;
+
+/*
+** Bms Item
+*/
+typedef struct{
+	BmsItemPart1 part1;/*Bms数据项部分1*/
+	BmsItemPart2 part2;/*Bms数据项部分2*/
 }BmsItem;
 
 /*

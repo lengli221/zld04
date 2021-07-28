@@ -12,8 +12,10 @@ void parse_BmsInfo(uint8 len,uint8* item){
 	volatile uint8 label = 0;
 	uint8 datalen = 0;
 	uint8 index = 0;
-	uint8 bmsTotalTen = 94;
-	uint8 i = 2;
+	uint8 bmsTotalTen = 101;
+	uint8 i = 0;
+	uint8 frameNum = 0;
+	uint8 frameDataItemLen = 0;
 	
 	/*帧标号*/
 	label = item[index];
@@ -28,20 +30,12 @@ void parse_BmsInfo(uint8 len,uint8* item){
 			packect_BmsInfo(1,1,(const uint8*)&bmsTotalTen);
 			break;
 		case 2:
-			/*电池ID长度起始*/
-			for(i=2;i<10;i++){
-				packect_BmsInfo(i,6,(uint8*)&bmsInfo.id.idLen);
+			frameNum = (uint8)(sizeof(BmsInfo)/6);
+			frameNum += sizeof(BmsInfo)%6 != 0?1:0;
+			for(i=0;i<frameNum;i++){
+				frameDataItemLen = i != (frameNum -1)?6:sizeof(BmsInfo)%6;
+				packect_BmsInfo(i+2,frameDataItemLen,(uint8*)((uint8*)&bmsInfo.id.idLen + 6*1));
 			}
-			/*请求电流起始*/
-			packect_BmsInfo(10,6,(uint8*)&bmsInfo.item.reqChgCur);
-			/*电芯电压起始*/
-			for(i=11;i<17;i++){
-				packect_BmsInfo(i,6,(uint8*)&bmsInfo.item.batCoreVol[0]);
-			}
-			packect_BmsInfo(17,4,(uint8*)&bmsInfo.item.batCoreVol[18]);
-			/*故障信息*/
-			packect_BmsInfo(18,2,(uint8*)&bmsInfo.err.errDetail.flag);
-			packect_BmsInfo(19,5,(uint8*)&bmsInfo.err.err[0]);
 			break;
 		case 3:
 			

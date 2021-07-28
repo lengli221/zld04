@@ -8,7 +8,7 @@ BmsInfo bmsInfo = {0};
 **		uint16:SCO
 */
 uint16 get_SOC(void){
-	return bmsInfo.item.soc;
+	return bmsInfo.item.part1.soc;
 }
 
 /*
@@ -77,10 +77,17 @@ bool get_BmsItem(void){
 */
 void set_BmsItem(uint8* data,uint16 len){
 	uint8 i = 0;
-	uint16* dataTemp =  (uint16*)&bmsInfo.item.batVol;
+	uint16* dataTemp =  (uint16*)&bmsInfo.item.part1.batVol;
 	
-	for(i=0;i<sizeof(BmsItem)/sizeof(uint16);i++){
+	for(i=0;i<sizeof(BmsItemPart1)/sizeof(uint16);i++){
 		*dataTemp = Common_Bytes_BigLittleChange((uint8*)(data+2*i));
+	}
+	
+	/*增加预留项偏置(40):电芯21电压~电芯电压40*/
+	dataTemp = (uint16*)&bmsInfo.item.part2.reqChgCur;
+	for(i=0;i<sizeof(BmsItemPart2)/sizeof(uint16);i++){
+		*dataTemp = Common_Bytes_BigLittleChange((uint8*)\
+					(data+sizeof(BmsItemPart1)+40+2*i));
 	}
 }
 
