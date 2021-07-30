@@ -697,6 +697,16 @@
               <FileType>5</FileType>
               <FilePath>..\User\ctr_sub\upperlayer_openDoor.h</FilePath>
             </File>
+            <File>
+              <FileName>upperlayer_doorResult.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_doorResult.c</FilePath>
+            </File>
+            <File>
+              <FileName>upperlayer_doorResult.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\ctr_sub\upperlayer_doorResult.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

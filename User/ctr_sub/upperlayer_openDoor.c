@@ -58,15 +58,19 @@ void openDoor_Proc(void){
 						stateInfo.sub.doorState = 0x01;/*仓门开*/
 						/*清标志*/
 						openDoorProcFlag = FALSE;
+						/*set OpenDoorResult */
+						set_OpenDoorResult(0);							
 						repCnt = 0;
 						step = 0;
 					}else{
-						if(Tickout((uint32*)&itick1,400) == TRUE){
+						if(Tickout((uint32*)&itick1,300) == TRUE){
 							if(++repCnt>= 3){
 								repCnt = 0;
 								stateInfo.sub.doorState = 0x02;/*仓门故障*/
 								/*清标志*/
 								openDoorProcFlag = FALSE;
+								/*set OpenDoorResult */
+								set_OpenDoorResult(2);								
 							}
 							step = 0;
 						}

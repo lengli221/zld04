@@ -4,6 +4,7 @@ const static UpperlayerPasreFun ulPasreFunTable[] = {
 	{0x01,parse_StateInfo},
 	{0x02,parse_CfgInfo},
 	{0x03,parse_OpenDoor},
+	{0x04,parse_OpenDoorResult},
 	{0x80,parse_BmsInfo},
 	{0x81,parse_ChargerInfo}
 };
@@ -43,7 +44,11 @@ void upperLayer_Fun(void){
 			/*
 			** upperlayer Parse Fun
 			*/
-			upperlayer_ParseFun();			
+			upperlayer_ParseFun();	
+			/*
+			** openDoorResult Proc
+			*/
+			openDoorResult_Proc();			
 			break;
 	}
 }

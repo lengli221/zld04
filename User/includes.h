@@ -38,6 +38,7 @@
 #include "upperlayer_bmsInfo.h"
 #include "upperlayer_chargerInfo.h"
 #include "upperlayer_openDoor.h"
+#include "upperlayer_doorResult.h"
 #include "upperlayer.h"
 
 #endif
