@@ -45,8 +45,9 @@ void set_BmsId(uint8* data,uint16 len){
 	memcpy((uint8*)&endId,(uint8*)&data[12*sizeof(uint16)],sizeof(uint32));
 	/*处理BMS ID长度*/
 	bmsInfo.id.idLen = endId == res?12:14;
+	bmsInfo.id.idLen *= sizeof(uint16);
 	/*copy Data*/
-	memcpy((uint8*)&bmsInfo.id.id[0],(uint8*)&data[0],bmsInfo.id.idLen*sizeof(uint16));
+	memcpy((uint8*)&bmsInfo.id.id[0],(uint8*)&data[0],bmsInfo.id.idLen);
 }
 
 /*
@@ -81,6 +82,7 @@ void set_BmsItem(uint8* data,uint16 len){
 	
 	for(i=0;i<sizeof(BmsItemPart1)/sizeof(uint16);i++){
 		*dataTemp = Common_Bytes_BigLittleChange((uint8*)(data+2*i));
+		dataTemp += 1;
 	}
 	
 	/*增加预留项偏置(40):电芯21电压~电芯电压40*/
@@ -88,6 +90,7 @@ void set_BmsItem(uint8* data,uint16 len){
 	for(i=0;i<sizeof(BmsItemPart2)/sizeof(uint16);i++){
 		*dataTemp = Common_Bytes_BigLittleChange((uint8*)\
 					(data+sizeof(BmsItemPart1)+40+2*i));
+		dataTemp += 1;
 	}
 }
 

@@ -85,7 +85,7 @@ bool modbus_ProParse(void* pPara,void* pBuf,uint16 len,ModBusParse_Handle handle
 	uint16 regNum = 0;
 	
 	/*指针容错校验 + 接收数据项长度校验*/
-	if(pPara == null || pbuf == null || len >= 6 || handle == null){
+	if(pPara == null || pbuf == null || len < 8 || handle == null){
 		return FALSE;
 	}
 	

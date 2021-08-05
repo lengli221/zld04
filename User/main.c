@@ -3,7 +3,7 @@
 int main(void){
 	bool flag = FALSE;
 	uint32 itick = 0;
-	uint8 tx[8] = {1,2,3,4,5,6,7,8};
+	uint8 tx[10] = {0x01,0x03,0x03,0xE8,0x00,0x0E,0x44,0x7E,5,6};
 //	uint8 tx1[8] = {11,12,13,14,15,16,17,18};
 	uint8 funId = 12;
 //	uint8 step = 0;
@@ -14,14 +14,14 @@ int main(void){
 	bsp_init();	
 	
 	while(1){	
-		if(Tickout((uint32*)&itick,5000) == TRUE){
+		if(Tickout((uint32*)&itick,500) == TRUE){
 			Tickout((uint32*)&itick,0);
 			flag = flag == FALSE?TRUE:FALSE;
 			flag == TRUE?Led_Ctr_Off:Led_Ctr_On;
-//			//printf("hello zld");
+			//printf("hello zld\r");
 //			switch(step){
 //				case 0:
-//					set_SendData(1,(uint8*)&tx[0],8,8);
+//					set_SendData(1,(uint8*)&tx[0],10,8);
 //					set_SendData(2,(uint8*)&tx[0],8,8);
 //					step++;
 //					break;
